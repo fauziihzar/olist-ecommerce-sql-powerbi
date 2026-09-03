@@ -168,6 +168,23 @@ The executive dashboard presents:
 | Average Delay | 8.22 days |
 | Maximum Delay | 153 days |
 
+## SQL & Power BI Validation
+
+The final dashboard KPIs were cross-checked against SQL query results to ensure consistency between the analytical layer and Power BI visualization.
+
+| Metric | SQL | Power BI |
+| --- | ---: | ---: |
+| Revenue | $1.60M | $1.60M |
+| Orders | 10,000 | 10K |
+| AOV | $160.23 | $160.23 |
+| On-Time Delivery Rate | 92.32% | 92.3% |
+| Average Review Score | 4.09 | 4.09 |
+| Average Delay | 8.22 days | 8.22 days |
+| Maximum Delay | 153 days | 153 days |
+
+**Validation Status: PASS**
+
+All key dashboard KPIs were successfully reconciled with the final SQL results. Minor differences in displayed precision (e.g., 92.32% vs 92.3%) are due to Power BI formatting.
 ---
 
 # Data Validation

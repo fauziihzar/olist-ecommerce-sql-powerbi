@@ -1,26 +1,27 @@
 # Brazilian E-Commerce Analytics — SQL & Power BI
 
-End-to-end e-commerce analytics project using **Python, MySQL, SQL, and Power BI** to analyze sales performance, logistics, customer retention, product categories, and seller performance.
+End-to-end e-commerce analytics project using **Python, MySQL, SQL, and Power BI** to analyze sales performance, delivery logistics, customer satisfaction, product categories, and seller performance.
 
 ## Project Overview
 
 This project uses the **Brazilian E-Commerce Public Dataset by Olist**.
 
-The original dataset contains approximately 100,000 orders from 2016–2018. For this project, I created a reproducible **10,000-order subset** using Python/Pandas to improve local processing efficiency while preserving relationships between related tables.
+The original dataset contains approximately 100,000 orders from 2016–2018. For this portfolio project, I created a reproducible **10,000-order subset** using Python/Pandas to improve local processing efficiency while preserving relationships between related tables.
 
-The project follows an end-to-end analytics workflow:
+### Analytics Workflow
 
-**Data Subsetting → MySQL Database → SQL Analysis → Power BI Dashboard → Business Insights**
+Data Subsetting → MySQL Database → SQL Analysis → Power BI Dashboard → Business Insights
 
 ---
 
 ## Business Questions
 
 - How is overall sales performance?
-- Does delivery performance affect customer satisfaction?
-- How strong is customer retention?
+- How efficiently are orders delivered?
+- Does delivery performance relate to customer satisfaction?
 - Which product categories generate the highest sales?
-- How do sellers perform across sales, delivery, and customer ratings?
+- Which sellers perform best across sales, delivery, and customer ratings?
+- What are the main logistics performance indicators?
 
 ---
 
@@ -29,94 +30,149 @@ The project follows an end-to-end analytics workflow:
 | Tool | Purpose |
 |---|---|
 | Python / Pandas | Data subsetting and validation |
-| MySQL | Relational database and data management |
-| SQL | Business analysis and customer segmentation |
-| Power BI | Dashboard and data visualization |
-| GitHub | Project documentation |
+| MySQL | Relational database management |
+| SQL | Business analysis and KPI calculation |
+| Power BI | Interactive dashboard and visualization |
+| GitHub | Documentation and portfolio presentation |
 
 ---
 
-## Key Insights
+# SQL Analysis
 
-### 1. Sales Performance
+The project contains 10 analytical queries covering sales, logistics, reviews, products, and seller performance.
 
-- **Total Revenue:** $1.60M
-- **Paid Orders:** 9,999
-- **Average Order Value:** $160.25
-
-The selected dataset generated approximately **$1.60M in payment-based revenue**, with an average value of approximately **$160 per paid order**.
-
----
-
-### 2. Delivery Performance & Customer Satisfaction
-
-| Delivery Status | Orders | Avg. Review |
-|---|---:|---:|
-| On-Time | 8,948 | 4.28 |
-| Late | 728 | 2.60 |
-
-Late deliveries were associated with a **1.68-point lower average review score** compared with on-time deliveries.
-
-**Business implication:** Improving delivery reliability should be a key operational priority because delivery performance is closely associated with customer satisfaction.
+| # | Analysis | Key Result |
+|---|---|---|
+| 1 | Overall Sales KPIs | $1.60M revenue, 10K orders, $160.23 AOV |
+| 2 | Average Delivery Time | 12.41 days average delivery |
+| 3 | Delivery Performance by Order Status | 9,715 delivered orders |
+| 4 | Estimated vs Actual Delivery | 24.41 days estimated vs 12.41 days actual |
+| 5 | Average Review Score | 4.09 / 5 |
+| 6 | Review Score Distribution | 57.67% of reviews are 5-star |
+| 7 | Top 10 Sellers | Top seller generated $22,998.98 in sales |
+| 8 | Review Score by Delivery Performance | 1-star reviews are more concentrated among late deliveries |
+| 9 | Delivery Delay Analysis | 8.22 days average delay; 153 days maximum |
+| 10 | Logistics Summary | 92.32% on-time delivery rate |
 
 ---
 
-### 3. Customer Retention
+# Key Insights
 
-The Power BI analysis shows a **0.43% repeat purchase rate**.
+### 1. Strong Overall Sales Performance
 
-RFM segmentation also shows:
+The 10,000-order dataset generated:
 
-- Recent Customers: **49.80%**
-- Hibernating / Lost: **49.78%**
-- At-Risk: **0.23%**
-- Champions / Loyal: **0.19%**
+- **$1.60M total payment revenue**
+- **10,000 orders**
+- **$160.23 average order value**
 
-**Business implication:** Customer retention represents a significant opportunity. Targeted reactivation campaigns, personalized offers, and loyalty strategies could help increase repeat purchases.
+This provides a high-level view of sales performance across the selected Olist dataset.
+
+### 2. Delivery Performance Is Strong Overall
+
+Among delivered orders with valid delivery dates:
+
+- **9,715 delivered orders**
+- **8,969 on-time orders**
+- **746 late orders**
+- **92.32% on-time delivery rate**
+
+The overall delivery performance is relatively strong, although late deliveries remain an important operational issue.
+
+### 3. Delivery Delays Are Material
+
+Among late deliveries:
+
+- **Average delay: 8.22 days**
+- **Maximum delay: 153 days**
+
+This indicates that while most orders are delivered on time, a smaller group of delayed orders can experience substantial delivery gaps.
+
+### 4. Delivery Performance Is Associated With Customer Satisfaction
+
+Average review scores by delivery status:
+
+| Delivery Status | Average Review |
+|---|---:|
+| On-Time | 4.28 |
+| Late | 2.60 |
+
+Late deliveries are associated with a **1.68-point lower average review score** compared with on-time deliveries.
+
+This suggests that logistics performance is closely related to customer satisfaction.
+
+### 5. Review Ratings Are Concentrated at 5 Stars
+
+Review distribution:
+
+| Review Score | Reviews | Share |
+|---:|---:|---:|
+| 5 | 5,738 | 57.67% |
+| 4 | 1,917 | 19.27% |
+| 3 | 847 | 8.51% |
+| 2 | 313 | 3.15% |
+| 1 | 1,134 | 11.40% |
+
+More than half of recorded reviews are 5-star ratings, while 1-star reviews represent **11.40%** of reviews.
+
+### 6. Product Sales Are Concentrated in Leading Categories
+
+The highest-selling product categories include:
+
+1. Watches & Gifts
+2. Health & Beauty
+3. Bed Bath Table
+4. Sports Leisure
+5. Computers Accessories
+
+These categories represent important areas for inventory planning, marketing, and product strategy.
+
+### 7. Seller Performance Varies
+
+The Top 10 seller analysis evaluates sellers using:
+
+- Total sales
+- On-time delivery rate
+- Average review score
+
+The highest-ranked seller generated approximately **$22,998.98** in sales while maintaining a **92.9% on-time delivery rate** and **4.35 average review score**.
 
 ---
 
-### 4. Top Product Categories
+# Power BI Dashboard
 
-| Rank | Category | Product Sales |
-|---|---|---:|
-| 1 | Watches & Gifts | $126.6K |
-| 2 | Health & Beauty | $124.1K |
-| 3 | Bed Bath Table | $103.1K |
-| 4 | Sports Leisure | $100.8K |
-| 5 | Computers Accessories | $91.3K |
+## Executive Sales & Logistics Overview
 
-**Business implication:** High-performing categories should receive greater attention in inventory planning, promotions, and product strategy.
+The executive dashboard presents:
 
-> Note: Category sales are calculated from `order_items.price`, while total revenue is calculated from `payments.payment_value`. These metrics represent different business measures.
+- Total Revenue
+- Total Orders
+- Average Order Value
+- On-Time Delivery Rate
+- Average Review Score
+- Annual Revenue Trend
+- Average Rating by Delivery Status
+- Top 10 Product Categories by Sales
+- Average Delay Days
+- Maximum Delay Days
 
----
+### Final Dashboard KPIs
 
-## Power BI Dashboard
-
-### Executive Sales & Logistics Overview
-
-![Executive Dashboard](screenshots/executive-dashboard.png)
-
-### Customer & Seller Analysis
-
-![Customer & Seller Dashboard](screenshots/customer-seller-dashboard.png)
-
-The dashboard provides interactive analysis of:
-
-- Revenue and order performance
-- Revenue trends
-- Delivery performance
-- Customer satisfaction
-- Customer segmentation
-- Product categories
-- Seller performance
+| KPI | Value |
+|---|---:|
+| Total Revenue | $1.60M |
+| Total Orders | 10K |
+| Average Order Value | $160.23 |
+| On-Time Delivery Rate | 92.3% |
+| Average Review Score | 4.09 |
+| Average Delay | 8.22 days |
+| Maximum Delay | 153 days |
 
 ---
 
-## Data Validation
+# Data Validation
 
-The final MySQL database contains:
+Final database validation confirmed:
 
 | Table | Rows |
 |---|---:|
@@ -129,13 +185,13 @@ The final MySQL database contains:
 | Reviews | 9,949 |
 | Category Translation | 71 |
 
-Core foreign-key validation returned **0 orphan records**.
+Core relationship validation returned **0 orphan records**.
 
-A small number of review records were not loaded during the import process and are documented as a data-quality limitation.
+The review table contains fewer records than the 10,000 orders because not every order has a corresponding review record.
 
 ---
 
-## Repository Structure
+# Repository Structure
 
 ```text
 olist-ecommerce-sql-powerbi/
@@ -150,10 +206,7 @@ olist-ecommerce-sql-powerbi/
 │   ├── 02_import_data.sql
 │   ├── 03_data_validation.sql
 │   ├── 04_sales_kpis.sql
-│   ├── 05_logistics_review.sql
-│   ├── 06_rfm_segmentation.sql
-│   ├── 07_product_categories.sql
-│   └── 08_seller_performance.sql
+│   └── 05_logistics_review.sql
 │
 ├── powerbi/
 │   └── Visualisasi.pdf

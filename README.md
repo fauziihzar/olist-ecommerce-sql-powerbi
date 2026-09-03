@@ -173,7 +173,7 @@ The executive dashboard presents:
 The final dashboard KPIs were cross-checked against SQL query results to ensure consistency between the analytical layer and Power BI visualization.
 
 | Metric | SQL | Power BI |
-| --- | ---: | ---: |
+|---|---:|---:|
 | Revenue | $1.60M | $1.60M |
 | Orders | 10,000 | 10K |
 | AOV | $160.23 | $160.23 |

@@ -184,7 +184,8 @@ The final dashboard KPIs were cross-checked against SQL query results to ensure 
 
 **Validation Status: PASS**
 
-**Validation Result:** All key dashboard KPIs were successfully reconciled with the final SQL results. Minor differences in displayed precision (e.g., 92.32% vs 92.3%) are due to Power BI formatting.
+Validation Result: All key dashboard KPIs were successfully reconciled with the final SQL results. Minor differences in displayed precision (e.g., 92.32% vs 92.3%) are due to Power BI formatting.
+
 ---
 
 # Data Validation

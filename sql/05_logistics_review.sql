@@ -147,50 +147,57 @@ ORDER BY review_score DESC;
 
 
 -- ============================================================
--- 7. Top 10 Sellers by Sales & Delivery Performance
+-- 7. Review Performance by Delivery Status
 -- ============================================================
-SELECT
-    oi.seller_id,
-    ROUND(SUM(oi.price), 2) AS total_sales,
 
-    ROUND(
-        100.0 * SUM(
-            CASE
-                WHEN o.order_delivered_customer_date
-                     <= o.order_estimated_delivery_date
-                THEN 1
-                ELSE 0
-            END
-        ) / COUNT(*),
-        1
-    ) AS on_time_delivery_rate,
-
-    ROUND(AVG(r.review_score), 2) AS avg_review_score
-
-FROM order_items oi
-
-JOIN orders o
-    ON oi.order_id = o.order_id
-
-LEFT JOIN (
+WITH review_per_order AS (
     SELECT
         order_id,
-        AVG(review_score) AS review_score
+        AVG(review_score) AS avg_review_score
     FROM reviews
     GROUP BY order_id
-) r
+)
+
+SELECT
+    CASE
+        WHEN o.order_delivered_customer_date
+             <= o.order_estimated_delivery_date
+            THEN 'On Time'
+
+        WHEN o.order_delivered_customer_date
+             > o.order_estimated_delivery_date
+            THEN 'Late'
+
+        ELSE 'Unknown'
+    END AS delivery_status,
+
+    COUNT(r.order_id) AS reviewed_orders,
+
+    ROUND(AVG(r.avg_review_score), 2) AS avg_review_score
+
+FROM orders o
+
+JOIN review_per_order r
     ON o.order_id = r.order_id
 
 WHERE o.order_status = 'delivered'
   AND o.order_delivered_customer_date IS NOT NULL
   AND o.order_estimated_delivery_date IS NOT NULL
 
-GROUP BY oi.seller_id
+GROUP BY
+    CASE
+        WHEN o.order_delivered_customer_date
+             <= o.order_estimated_delivery_date
+            THEN 'On Time'
 
-ORDER BY total_sales DESC
+        WHEN o.order_delivered_customer_date
+             > o.order_estimated_delivery_date
+            THEN 'Late'
 
-LIMIT 10;
+        ELSE 'Unknown'
+    END
 
+ORDER BY avg_review_score DESC;
 -- ============================================================
 -- 8. Review Score by Delivery Performance
 -- ============================================================

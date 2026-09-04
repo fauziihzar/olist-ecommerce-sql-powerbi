@@ -32,13 +32,22 @@ Provides deeper analysis of:
 
 The Power BI dashboard is available in:
 
-`olist_ecommerce_dashboard.pbix`
+[Download Power BI Dashboard](./olist_ecommerce_dashboard.pbix)
 
 Two dashboard screenshots are also provided for quick review:
 
-- `dashboard_01_executive_overview.png`
-- `dashboard_02_customer_seller_analysis.png
+- [Executive Sales & Logistics Overview](./dashboard_01_executive_overview.png)
+- [Customer & Seller Analysis](./dashboard_02_customer_seller_analysis.png)
 
+## Dashboard Preview
+
+### 1. Executive Sales & Logistics Overview
+
+![Executive Sales & Logistics Overview](./dashboard_01_executive_overview.png)
+
+### 2. Customer & Seller Analysis
+
+![Customer & Seller Analysis](./dashboard_02_customer_seller_analysis.png)
 
 ## Key KPIs
 

@@ -247,13 +247,18 @@ olist-ecommerce-sql-powerbi/
 │
 ├── README.md
 │
-├── sql/
-│   ├── README.md
-│   ├── 01_sales_logistics_analysis.sql
-│   └── 02_customer_product_seller_analysis.sql
+├── notebooks/
+│   └── Membuat_subset_olist.ipynb
 │
-├── power_bi/
-│   ├── README.md
-│   ├── olist_ecommerce_dashboard.pbix
-│   ├── dashboard_01_executive_overview.png
-│   └── dashboard_02_customer_seller_analysis.png
+├── sql/
+│   ├── 01_create_tables.sql
+│   ├── 02_import_data.sql
+│   ├── 03_data_validation.sql
+│   ├── 04_sales_kpis.sql
+│   └── 05_logistics_review.sql
+│
+└── power_bi/
+    ├── README.md
+    ├── olist_ecommerce_dashboard.pbix
+    ├── dashboard_01_executive_overview.png
+    └── dashboard_02_customer_seller_analysis.png

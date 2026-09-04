@@ -10,6 +10,8 @@ This project analyzes the **Brazilian E-Commerce Public Dataset by Olist**.
 
 The original dataset contains approximately 100,000 orders from 2016–2018. For this portfolio project, a reproducible **10,000-order subset** was created using Python/Pandas to improve local processing efficiency while preserving relationships between orders and related tables.
 
+All analysis and reported KPIs in this project are based on the **10,000-order subset**.
+
 ### Analytics Workflow
 
 **Data Subsetting → MySQL Database → SQL Analysis → Power BI Dashboard → Business Insights**
@@ -18,14 +20,14 @@ The original dataset contains approximately 100,000 orders from 2016–2018. For
 
 ## Business Questions
 
-The analysis focuses on the following business questions:
+This project focuses on the following business questions:
 
-- How is overall sales performance?
-- How efficiently are orders delivered?
-- Is delivery performance associated with customer satisfaction?
-- Which product categories generate the highest sales?
-- Which sellers perform best across sales, delivery, and customer ratings?
-- What are the main logistics performance indicators?
+1. How is overall sales performance?
+2. How efficiently are orders delivered?
+3. Is delivery performance associated with customer satisfaction?
+4. Which product categories generate the highest sales?
+5. Which sellers perform best across sales, delivery, and customer ratings?
+6. What are the main logistics performance indicators?
 
 ---
 
@@ -33,11 +35,11 @@ The analysis focuses on the following business questions:
 
 | Tool | Purpose |
 |---|---|
-| Python / Pandas | Data subsetting and validation |
+| Python / Pandas | Data subsetting and data preparation |
 | MySQL | Relational database management |
-| SQL | Business analysis and KPI calculation |
+| SQL | Data validation, KPI calculation, and business analysis |
 | Power BI | Interactive dashboard and visualization |
-| GitHub | Documentation and portfolio presentation |
+| GitHub | Version control and portfolio documentation |
 
 ---
 
@@ -60,61 +62,40 @@ The subset preserves relationships between the main entities, including:
 - Reviews
 - Product Category Translation
 
-The reduced dataset was created to make local SQL processing and Power BI development more efficient while maintaining the relational structure required for analysis.
-
----
-
-## Database Validation
-
-The final MySQL database contains the following validated tables:
-
-| Table | Rows |
-|---|---:|
-| Customers | 10,000 |
-| Orders | 10,000 |
-| Order Items | 11,383 |
-| Products | 6,747 |
-| Sellers | 1,654 |
-| Payments | 10,476 |
-| Reviews | 9,949 |
-| Category Translation | 71 |
+The reduced dataset was created to improve local processing efficiency while maintaining the relational structure required for SQL JOINs and business analysis.
 
 ---
 
 # SQL Analysis
 
-The project contains **10 analytical SQL queries** covering sales, logistics, reviews, products, and seller performance.
-
-### Key Analysis
+The project contains **10 analytical queries organized across five SQL scripts**, covering sales, logistics, reviews, products, and seller performance.
 
 | # | Analysis | Key Result |
 |---|---|---|
 | 1 | Overall Sales KPIs | $1.60M revenue, 10K orders, $160.23 AOV |
 | 2 | Average Delivery Time | 12.41 days average delivery |
-| 3 | Delivery Performance by Order Status | 9,715 delivered orders |
+| 3 | Delivery Performance | 9,715 delivered orders |
 | 4 | Estimated vs Actual Delivery | 24.41 days estimated vs 12.41 days actual |
 | 5 | Average Review Score | 4.09 / 5 |
 | 6 | Review Score Distribution | 57.67% of reviews are 5-star |
 | 7 | Top 10 Sellers | Top seller generated approximately $22,998.98 |
-| 8 | Review Score by Delivery Performance | Late deliveries have lower average ratings |
+| 8 | Review Score by Delivery Performance | On-time deliveries average 4.28 vs 2.60 for late deliveries |
 | 9 | Product Category Sales | Leading categories identified by sales |
-| 10 | Seller Performance | Sellers compared using sales, delivery, and ratings |
+| 10 | Overall Logistics Performance | 92.32% on-time delivery rate |
 
-SQL scripts are available in:
-
-`/sql`
+SQL scripts are available in the [`sql`](./sql/) folder.
 
 ---
 
 # Power BI Dashboard
 
-The Power BI dashboard provides an interactive view of sales, logistics, customer behavior, and seller performance.
+The Power BI dashboard provides an interactive view of sales performance, logistics, customer behavior, and seller performance.
 
-### Dashboard Pages
+## Dashboard 1 — Executive Sales & Logistics Overview
 
-#### 1. Executive Sales & Logistics Overview
+![Executive Sales & Logistics Overview](./power_bi/dashboard_01_executive_overview.png)
 
-Key metrics include:
+This dashboard focuses on:
 
 - Total Revenue
 - Total Orders
@@ -123,24 +104,26 @@ Key metrics include:
 - Average Review Score
 - Average Delivery Delay
 - Maximum Delivery Delay
-- Annual Revenue Trend
-- Average Rating by Delivery Status
-- Top 10 Product Categories by Sales
+- Revenue Trend
+- Delivery Performance
+- Top Product Categories
 
-#### 2. Customer & Seller Analysis
+---
 
-The second dashboard focuses on:
+## Dashboard 2 — Customer & Seller Analysis
 
-- Customer purchase frequency
-- Repeat customer rate
-- Customer state filtering
+![Customer & Seller Analysis](./power_bi/dashboard_02_customer_seller_analysis.png)
+
+This dashboard focuses on:
+
+- Customer purchase behavior
+- Repeat customer analysis
+- Customer state analysis
 - Seller sales performance
 - Seller on-time delivery rate
 - Seller average review score
 
-Dashboard files and screenshots are available in:
-
-`/power_bi`
+The Power BI `.pbix` file and dashboard documentation are available in the [`power_bi`](./power_bi/) folder.
 
 ---
 
@@ -174,9 +157,9 @@ Among late deliveries:
 - **8.22 days average delay**
 - **153 days maximum delay**
 
-This indicates that although most delivered orders arrive on time, a smaller group of late orders can experience substantial delivery gaps.
+Although most delivered orders arrive on time, a smaller group of late orders can experience substantial delivery delays.
 
-> Note: **Average Delivery Time (12.41 days)** measures the total time from purchase to delivery, while **Average Delay (8.22 days)** measures how late an order arrived compared with its estimated delivery date. These are different metrics.
+> **Note:** Average Delivery Time (12.41 days) measures the time from purchase to customer delivery, while Average Delay (8.22 days) measures how late an order arrived compared with its estimated delivery date. These are different metrics.
 
 ### 4. Delivery Performance Is Associated With Customer Satisfaction
 
@@ -249,6 +232,35 @@ Minor differences in displayed precision, such as **92.32% vs 92.3%**, are due t
 
 ---
 
+# Data Validation
+
+The final MySQL database contains the following validated tables:
+
+| Table | Rows |
+|---|---:|
+| Customers | 10,000 |
+| Orders | 10,000 |
+| Order Items | 11,383 |
+| Products | 6,747 |
+| Sellers | 1,654 |
+| Payments | 10,476 |
+| Reviews | 9,949 |
+| Category Translation | 71 |
+
+Core relationship validation returned **0 orphan records**.
+
+The review table contains fewer records than the 10,000 orders because not every order has a corresponding review record.
+
+---
+
+# Project Components
+
+- [`SQL Analysis`](./sql/) — Database creation, data import, validation, KPI calculation, and analytical queries
+- [`Power BI Dashboard`](./power_bi/) — Interactive dashboard, `.pbix` file, screenshots, and dashboard documentation
+- [`Data Preparation`](./notebooks/) — Python notebook used to create the 10,000-order subset
+
+---
+
 # Repository Structure
 
 ```text
@@ -256,13 +268,18 @@ olist-ecommerce-sql-powerbi/
 │
 ├── README.md
 │
+├── notebooks/
+│   └── create_olist_subset.ipynb
+│
 ├── sql/
-│   ├── README.md
-│   ├── 01_sales_logistics_analysis.sql
-│   └── 02_customer_product_seller_analysis.sql
+│   ├── 01_create_tables.sql
+│   ├── 02_import_data.sql
+│   ├── 03_data_validation.sql
+│   ├── 04_sales_kpis.sql
+│   └── 05_logistics_review.sql
 │
 └── power_bi/
     ├── README.md
     ├── olist_ecommerce_dashboard.pbix
     ├── dashboard_01_executive_overview.png
-    └── dashboard_02_customer_seller_analysis
+    └── dashboard_02_customer_seller_analysis.png

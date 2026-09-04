@@ -26,3 +26,26 @@ Provides deeper analysis of:
 - Product sales
 - On-time delivery rate
 - Average review score
+
+
+## Dashboard File
+
+The Power BI dashboard is available in:
+
+`olist_ecommerce_dashboard.pbix`
+
+Two dashboard screenshots are also provided for quick review:
+
+- `dashboard_01_executive_overview.png`
+- `dashboard_02_customer_seller_analysis.png
+
+
+## Key KPIs
+
+- Total Revenue: $1.60M
+- Total Orders: 10,000
+- Average Order Value: $160.23
+- On-Time Delivery Rate: 92.3%
+- Average Review Score: 4.09
+- Average Delivery Delay: 8.22 days
+- Maximum Delivery Delay: 153 days

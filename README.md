@@ -186,6 +186,15 @@ The final dashboard KPIs were cross-checked against SQL query results to ensure 
 
 Validation Result: All key dashboard KPIs were successfully reconciled with the final SQL results. Minor differences in displayed precision (e.g., 92.32% vs 92.3%) are due to Power BI formatting.
 
+## Key Insights
+
+- **Revenue & Orders:** The 10,000-order dataset generated approximately **$1.60M** in total revenue, with an average order value of **$160.23**.
+- **Delivery Performance:** **92.32%** of delivered orders arrived on time, while **746 orders** were delivered late.
+- **Delivery Delay:** Late orders experienced an average delay of **8.22 days**, with a maximum delay of **153 days**.
+- **Customer Reviews:** The overall average review score was **4.09/5**, indicating a relatively positive customer rating across the dataset.
+- **Delivery & Reviews:** On-time deliveries received a higher average review score than late deliveries, suggesting that delivery performance may be associated with customer ratings.
+- **Seller Performance:** The top 10 sellers were compared based on **sales, on-time delivery rate, and average review score** to identify high-performing sellers.
+
 ---
 
 # Data Validation

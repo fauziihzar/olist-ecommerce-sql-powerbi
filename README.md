@@ -39,7 +39,7 @@ Data Subsetting → MySQL Database → SQL Analysis → Power BI Dashboard → B
 
 # SQL Analysis
 
-The project contains 10 analytical queries covering sales, logistics, reviews, products, and seller performance.
+The project contains 10 analytical queries organized into two SQL analysis scripts covering sales, logistics, reviews, products, and seller performance.
 
 | # | Analysis | Key Result |
 |---|---|---|
